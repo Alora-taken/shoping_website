@@ -9,8 +9,11 @@ class SoftDeleteManager(models.Manager):
 class BaseModel(models.Model):
 
     created_at = models.DateTimeField(auto_now_add = True)
+    created_by = models.ForeignKey(null=True, blank=True)
     modified_at = models.DateTimeField(auto_now = True)
+    modified_by = models.ForeignKey(null=True, blank=True)
     deleted_at = models.DateTimeField(null=True, blank=True)
+    deleted_by = models.ForeignKey(null=True, blank=True)
     
     
     class Meta:

@@ -19,15 +19,15 @@ from django.urls import path, include
 from django.conf import settings  
 from django.conf.urls.static import static  
 from PRODUCT import urls as product_urls
-from ADMIN_PANEL import urls as admin_urls
+from accounts import urls as acc_urls
 from CUSTOMERS import urls as customers_urls
 from ORDERS import urls as orders_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('staff/', include(admin_urls)),
-    path('', include(product_urls)),
-    path('customers/', include(customers_urls)),
+    path('', include(customers_urls)),
+    path('product/', include(product_urls)),
+    path('account/',include(acc_urls)),
     path('orders/', include(orders_urls)),
 ]
 if settings.DEBUG:
