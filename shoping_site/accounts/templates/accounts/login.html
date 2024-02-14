@@ -1,0 +1,110 @@
+{% extends "core/base.html" %}{% load static %} {% block title%}
+<title>Log in - Brand</title>
+{% endblock %} {% block content %}
+
+<section class="py-5">
+  <div class="container py-5">
+    <div class="row mb-4 mb-lg-5">
+      <div class="col-md-8 col-xl-6 text-center mx-auto">
+        <h2 class="fw-bold">Welcome back</h2>
+      </div>
+    </div>
+    <div
+      class="alert alert-success"
+      role="alert"
+      style="
+        width: auto;
+        color: rgb(147, 0, 0);
+        font-weight: bold;
+        background: rgb(211, 205, 199);
+        border-style: none;
+        text-align: center;
+        padding: 0;
+        margin-right: 25%;
+        margin-left: 25%;
+      "
+    >
+      <span id="alert" style="text-align: center"></span>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-6 col-xl-4">
+        <div class="card">
+          <div
+            class="card-body text-center d-flex flex-column align-items-center"
+          >
+            <div
+              class="bs-icon-xl bs-icon-circle bs-icon-primary shadow bs-icon my-4"
+              style="background: rgb(142, 93, 161)"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+                class="bi bi-person"
+              >
+                <path
+                  d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"
+                ></path>
+              </svg>
+            </div>
+            <form method="post">
+              <div class="mb-3">
+                <input
+                  class="form-control"
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                />
+              </div>
+              <div class="d-none mb-3" id="login_with_pass">
+                <input
+                  class="form-control"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                />
+              </div>
+              <div class="d-flex mb-3" id="login_with_otp">
+                <input
+                  class="form-control"
+                  type="password"
+                  name="otp_code"
+                  placeholder="Code"
+                  style="max-width: 150px"
+                /><button
+                  class="btn btn-sm"
+                  type="button"
+                  style="border-radius: 0; font-size: 10px; margin: 0"
+                >
+                  Send Code
+                </button>
+              </div>
+              <a class="d-none">Login otp code</a><a>Login password</a>
+              <div class="mb-3">
+                <button
+                  class="btn btn-primary shadow d-block w-100"
+                  type="submit"
+                  style="
+                    background: rgb(61, 103, 107);
+                    margin-right: auto;
+                    margin-left: auto;
+                  "
+                >
+                  Log in
+                </button>
+              </div>
+              <p class="text-muted">
+                Forgot your password?&nbsp;&nbsp;<a href="signup.html"
+                  >Sign Up</a
+                >
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
