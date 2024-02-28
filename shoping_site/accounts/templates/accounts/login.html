@@ -24,7 +24,22 @@
         margin-left: 25%;
       "
     >
-      <span id="alert" style="text-align: center"></span>
+      <span id="alert" style="text-align: center">{{alert}}</span>
+    </div>
+    <div
+      class="alert alert-success"
+      role="alert"
+      style="
+        width: auto;
+        font-weight: bold;
+        border-style: none;
+        text-align: center;
+        padding: 0;
+        margin-right: 25%;
+        margin-left: 25%;
+      "
+    >
+      <span id="alert" style="text-align: center">{{s_alert}}</span>
     </div>
     <div class="row d-flex justify-content-center">
       <div class="col-md-6 col-xl-4">
@@ -50,12 +65,15 @@
               </svg>
             </div>
             <form method="post">
+              {% csrf_token %}
               <div class="mb-3">
                 <input
                   class="form-control"
                   type="email"
                   name="email"
+                  id="email"
                   placeholder="Email"
+                  value="{{ email }}"
                 />
               </div>
               <div class="d-none mb-3" id="login_with_pass">
@@ -63,17 +81,23 @@
                   class="form-control"
                   type="password"
                   name="password"
+                  id="password"
                   placeholder="Password"
                 />
               </div>
+
               <div class="d-flex mb-3" id="login_with_otp">
                 <input
                   class="form-control"
                   type="password"
                   name="otp_code"
+                  id="otp_code"
                   placeholder="Code"
                   style="max-width: 150px"
-                /><button
+                />
+                <input type="hidden" name="send_otp_code" id="send_otp_code" />
+                <button
+                  id="send_otp_code_btn"
                   class="btn btn-sm"
                   type="button"
                   style="border-radius: 0; font-size: 10px; margin: 0"
@@ -81,7 +105,7 @@
                   Send Code
                 </button>
               </div>
-              <a class="d-none">Login otp code</a><a>Login password</a>
+              <a href="#" class="d-none" id="login_with_otp_link">Login with otp code</a><a href="#" id="login_with_pass_link" >Login with password</a>
               <div class="mb-3">
                 <button
                   class="btn btn-primary shadow d-block w-100"
@@ -96,7 +120,7 @@
                 </button>
               </div>
               <p class="text-muted">
-                Forgot your password?&nbsp;&nbsp;<a href="signup.html"
+                Don't have an account?&nbsp;&nbsp;<a href="{% url 'account:sign_up' %}"
                   >Sign Up</a
                 >
               </p>
@@ -107,4 +131,37 @@
     </div>
   </div>
 </section>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var sendCodeButton = document.querySelector('#send_otp_code_btn');
+    var otpCodeInput = document.querySelector('input[name="send_otp_code"]');
+    sendCodeButton.addEventListener('click', function() {
+      otpCodeInput.value = "pso";
+      var form = sendCodeButton.closest('form');
+      form.submit();
+    });
+  });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $("#login_with_otp_link").click(function(e) {
+      e.preventDefault();
+      $("#login_with_otp").removeClass("d-none");
+      $("#login_with_pass").addClass("d-none");
+      $("#login_with_otp_link").addClass("d-none");
+      $("#login_with_pass_link").removeClass("d-none");
+    });
+
+    $("#login_with_pass_link").click(function(e) {
+      e.preventDefault();
+      $("#login_with_pass").removeClass("d-none");
+      $("#login_with_otp").addClass("d-none");
+      $("#login_with_pass_link").addClass("d-none");
+      $("#login_with_otp_link").removeClass("d-none");
+    });
+  });
+</script>
+
 {% endblock %}

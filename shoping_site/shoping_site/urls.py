@@ -22,6 +22,7 @@ from PRODUCT import urls as product_urls
 from accounts import urls as acc_urls
 from CUSTOMERS import urls as customers_urls
 from ORDERS import urls as orders_urls
+from core import urls as core_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +30,7 @@ urlpatterns = [
     path('product/', include(product_urls)),
     path('account/',include(acc_urls)),
     path('orders/', include(orders_urls)),
+    path('core/', include(core_urls)),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

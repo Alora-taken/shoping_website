@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
+app_name = 'product'
 urlpatterns = [
     path('brands/', views.brand, name='brands'),
     path('product/', views.product, name='product'),

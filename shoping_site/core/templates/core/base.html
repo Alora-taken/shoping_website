@@ -71,7 +71,7 @@
             <li class="nav-item">
               <a
                 class="nav-link active"
-                href="index.html"
+                href="/"
                 style="color: rgb(56, 50, 47)"
                 >Home</a
               >
@@ -79,7 +79,7 @@
             <li class="nav-item">
               <a
                 class="nav-link"
-                href="brands.html"
+                href="{% url 'product:brands' %}"
                 style="color: rgb(56, 50, 47)"
                 >Brands</a
               >
@@ -87,7 +87,7 @@
             <li class="nav-item">
               <a
                 class="nav-link"
-                href="products.html"
+                href="{% url 'product:products' %}"
                 style="color: rgb(56, 50, 47)"
                 >Products</a
               >
@@ -95,7 +95,7 @@
             <li class="nav-item">
               <a
                 class="nav-link"
-                href="contacts.html"
+                href="{% url 'contact' %}"
                 style="color: rgb(56, 50, 47)"
                 >Contact Us</a
               >
@@ -156,9 +156,10 @@
               </div>
             </li>
           </ul>
-          <div class="dropdown d-none">
+          <div class="dropdown d-none" id='profile_drop' style='margin-top: auto;margin-bottom: auto;'>
             <a aria-expanded="false" data-bs-toggle="dropdown" href="#"
               ><img
+                id="profile_img"
                 class="justify-content-center align-items-center align-content-center"
                 src="{% static 'assets/img/transparent-photo-icon-for-your-interface-icon-picture-icon-5f9e5dcf942c94.2750417916042142236069copy.png' %}"
                 style="
@@ -168,16 +169,17 @@
                   text-align: center;
                 "
             /></a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="profile.html">Profile</a
-              ><a class="dropdown-item" href="orders.html">Orders</a
-              ><a class="dropdown-item" href="index.html">Log Out</a>
+            <div class="dropdown-menu dropdown-menu-end" style='margin-top: auto;margin-bottom: auto;margin-right:10px'>
+              <a class="dropdown-item" href="{% url 'account:profile' %}">Profile</a
+              ><a class="dropdown-item" href="{% url 'order:orders' %}">Orders</a
+              ><a class="dropdown-item" href="#" onclick="logoutUser()">Log Out</a>
             </div>
           </div>
           <a
+            id='sign_in_btn'
             class="btn btn-primary shadow"
             role="button"
-            href="login.html"
+            href="{% url 'account:login' %}"
             style="
               background: rgb(142, 93, 161);
               border-style: none;
@@ -200,7 +202,7 @@
               class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column"
             >
               <ul class="list-unstyled">
-                <li><a href="contacts.html">Contact Us</a></li>
+                <li><a href="{% url 'contact' %}">Contact Us</a></li>
                 <li></li>
               </ul>
             </div>
@@ -208,7 +210,7 @@
               class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column"
             >
               <ul class="list-unstyled">
-                <li><a href="brands.html">Brands</a></li>
+                <li><a href="{% url 'product:brands' %}">Brands</a></li>
                 <li></li>
                 <li></li>
               </ul>
@@ -217,7 +219,7 @@
               class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column"
             >
               <ul class="list-unstyled">
-                <li><a href="products.html">All Items</a></li>
+                <li><a href="{% url 'product:products' %}">All Items</a></li>
                 <li></li>
                 <li></li>
               </ul>
@@ -287,6 +289,52 @@
           </div>
         </div>
       </footer>
+    <script>
+      function updateUserInfo() {
+          fetch('/core/api/user-info/')
+              .then(response => response.json())
+              .then(data => {
+                  const dropdown = document.getElementById('profile_drop');
+                  const profile_img = document.getElementById('profile_img');
+                  const sign_in_btn = document.getElementById('sign_in_btn');
+
+                  if (data.error) {
+                      console.error('User not found');
+                  } 
+                  else {
+                      profile_img.src = '/static/' + data.photo; // مسیر عکس کاربر
+                      dropdown.classList.remove('d-none');
+                      sign_in_btn.classList.add('d-none');
+                  }
+              })
+              .catch(error => console.error('Error:', error));
+      }
+      if (document.cookie.split(';').some((item) => item.trim().startsWith('login_token='))) {
+        updateUserInfo();
+    }
+    </script>
+    <script>
+      function logoutUser() {
+        fetch('/core/api/logout/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}',  // افزودن توکن CSRF برای جلوگیری از حملات CSRF
+            },
+            credentials: 'same-origin',  // ارسال کوکی‌ها به سرور
+        })
+        .then(response => {
+            if (response.ok) {
+                window.location.href = '';  // Redirect به صفحه اصلی یا هر صفحه دلخواه
+            } else {
+                console.error('Logout failed');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+      }
+    </script>
+      
+        
     <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'assets/js/bs-init.js' %}"></script>
     <script src="{% static 'assets/js/bold-and-bright.js' %}"></script>

@@ -1,83 +1,465 @@
-{% extends "core/base.html" %}
-{% load static %}
+{% extends "core/base.html" %} {% load static %} {% block title %}
+<title>Profile - Brand</title>
+{% endblock %} {% block content %}
+<section class="py-5">
+  <div
+    class="container profile profile-view"
+    id="profile"
+    style="margin-bottom: 50px"
+  >
+    <div class="row">
+      <div class="col-md-12 alert-col relative">
+        <div class="alert alert-info absolue center" role="alert">
+          <button
+            class="btn-close"
+            type="button"
+            aria-label="Close"
+            data-bs-dismiss="alert"
+          ></button
+          ><span>Profile save with success</span>
+        </div>
+      </div>
+    </div>
+    <form>
+      <div class="row profile-row">
+        <div class="col-md-4 relative">
+          <div class="avatar">
+            <div id='avatar' name='avatar' class="avatar-bg center" style="background: url(https://www.gravatar.com/avatar/1234566?size=200&d=mm);"></div>
+          </div>
+          <input
+            class="form-control form-control"
+            type="file"
+            name="avatar-file"
+          />
+        </div>
+        <div class="col-md-8">
+          <h1>Profile</h1>
+          <hr />
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group mb-3">
+                <label class="form-label">Firstname </label
+                ><input class="form-control" type="text" name="firstname" id="firstname" required="True"/>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group mb-3">
+                <label class="form-label">Lastname </label
+                ><input class="form-control" type="text" name="lastname" id="lastname" required="True"/>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group mb-3">
+                <label class="form-label">Email </label
+                ><input
+                  class="form-control"
+                  type="email"
+                  autocomplete="on"
+                  required="True"
+                  name="email"
+                  id="email"
+                />
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group mb-3">
+                <label class="form-label">Phone</label
+                ><input
+                  class="form-control"
+                  type="tel"
+                  autocomplete="on"
+                  required="True"
+                  name="phone"
+                  id="phone"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group mb-3">
+                <label class="form-label">Password </label
+                ><input
+                  class="form-control"
+                  type="password"
+                  name="password"
+                  id="password"
+                  autocomplete="off"
+                  required="False"
+                />
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group mb-3">
+                <label class="form-label">Confirm Password</label
+                ><input
+                  class="form-control"
+                  type="password"
+                  name="confirmpass"
+                  id="confirmpass"
+                  autocomplete="off"
+                  required="False"
+                />
+              </div>
+            </div>
+          </div>
+          <hr />
+        </div>
+      </div>
+      <div>
+        <button
+          class="btn form-btn"
+          type="submit"
+          style="
+            background: #3d676b;
+            color: rgb(255, 255, 255);
+            padding-top: 5px;
+            padding-bottom: 5px;
+            width: 100%;
+            max-width: 100%;
+          "
+        >
+          SAVE Profile
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="container justify-content-between">
+    <h3
+      class="text-center"
+      style="color: rgb(56, 50, 47); margin-bottom: 1px; font-weight: bold"
+    >
+      Addresses
+    </h3>
+    <div
+      style="
+        width: 14%;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 20px;
+        border-style: solid;
+        border-color: rgba(116, 111, 109, 0.5);
+      "
+    ></div>
+    <div class="text-start" style="margin-bottom: 20px">
+      <button
+        class="btn"
+        type="button"
+        style="
+          padding-right: 10px;
+          padding-left: 10px;
+          padding-top: 0;
+          padding-bottom: 0;
+          color: rgb(36, 36, 36);
+          box-shadow: 0px 0px 15px rgba(61, 103, 107, 0.5);
+        "
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="1em"
+          height="1em"
+          fill="currentColor"
+          viewBox="0 0 16 16"
+          class="bi bi-plus-lg"
+          style="color: rgb(61, 103, 107)"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+          ></path></svg
+        >&nbsp; Add Address
+      </button>
+    </div>
+    <div
+      class="row"
+      id="address_"
+      style="
+        margin-bottom: 20px;
+        border: 0.1px solid rgba(36, 36, 36, 0.3);
+        border-right-style: none;
+        border-left-style: none;
+      "
+    >
+      <div class="col text-center" style="margin-bottom: 10px">
+        <button
+          class="btn"
+          type="button"
+          style="
+            padding-right: 5px;
+            padding-left: 5px;
+            padding-top: 0;
+            padding-bottom: 0;
+          "
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1em"
+            height="1em"
+            fill="currentColor"
+            viewBox="0 0 16 16"
+            class="bi bi-trash"
+            style="color: rgb(142, 93, 161)"
+          >
+            <path
+              d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+            ></path>
+          </svg></button
+        ><button
+          class="btn"
+          type="button"
+          style="
+            padding-right: 5px;
+            padding-left: 5px;
+            padding-top: 0;
+            padding-bottom: 0;
+          "
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1em"
+            height="1em"
+            fill="currentColor"
+            viewBox="0 0 16 16"
+            class="bi bi-check-lg"
+            style="color: rgb(61, 103, 107)"
+          >
+            <path
+              d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"
+            ></path>
+          </svg>
+        </button>
+        <div
+          class="alert alert-success"
+          role="alert"
+          style="margin-right: auto; margin-left: auto; display: none"
+        >
+          <span id="update_success"><strong>Updated Successfully</strong></span>
+        </div>
+      </div>
+      <div
+        class="col d-flex flex-fill justify-content-between"
+        style="margin-bottom: 10px"
+      >
+        <input
+          type="text"
+          style="
+            border-style: none;
+            box-shadow: 0px 0px 15px rgba(61, 103, 107, 0.5);
+            border-radius: 15px;
+            text-align: center;
+            max-height: 29.5938px;
+          "
+          name="addressname"
+          placeholder="Name"
+          inputmode="tel"
+        />
+        <div class="dropdown" id="state_dropdown">
+          <button
+            class="btn"
+            aria-expanded="false"
+            aria-haspopup="true" 
+            data-bs-toggle="dropdown"
+            id="chosen_state_btn"
+            type="button"
+            style="
+              padding: 1px 2px;
+              min-width: 184px;
+              color: rgb(36, 36, 36);
+              border-radius: 30px;
+              box-shadow: 0px 0px 15px rgba(61, 103, 107, 0.5);
+            "
+          >
+            State
+        </button>
+        <input type="hidden" id="selected_state_data" name="selected_state_data">
+          <div
+            class="dropdown-menu"
+            aria-labelledby="chosen_state_btn"
+            data-bs-smooth-scroll="true"
+            style="height: 200px; overflow: scroll; border-radius: 0px"
+          >
+            
+          </div>
+        </div>
+        <div class="dropdown" id="city_dropdown">
+          <button
+            class="btn"
+            aria-expanded="false"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            id="chosen_city_btn"
+            type="button"
+            style="
+              padding: 1px 2px;
+              min-width: 184px;
+              color: rgb(36, 36, 36);
+              border-radius: 30px;
+              box-shadow: 0px 0px 15px rgba(61, 103, 107, 0.5);
+            "
+          >
+            City
+          </button>
+          <input type="hidden" id="selected_city_data" name="selected_city_data">
+          <div class="dropdown-menu" aria-labelledby="chosen_city_btn">
+            
+          </div>
+        </div>
+      </div>
+      <div
+        class="col d-flex flex-fill justify-content-between"
+        style="margin-bottom: 20px; width: 100%"
+      >
+        <textarea
+          style="
+            height: 32px;
+            border-style: none;
+            box-shadow: 0px 0px 15px rgb(61, 103, 107);
+            max-width: 184px;
+          "
+          name="fulladdress"
+          placeholder="Full Address"
+        ></textarea
+        ><input
+          type="text"
+          style="
+            border-style: none;
+            box-shadow: 0px 0px 15px rgba(61, 103, 107, 0.5);
+            border-radius: 15px;
+            text-align: center;
+          "
+          name="postalcode"
+          placeholder="Postal Code"
+          inputmode="numeric"
+        /><input
+          type="text"
+          style="
+            border-style: none;
+            box-shadow: 0px 0px 15px rgba(61, 103, 107, 0.5);
+            border-radius: 15px;
+            text-align: center;
+          "
+          name="addressnumber"
+          placeholder="Number"
+          inputmode="tel"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function() {
+      // Fetch cities data from the API
+      $.ajax({
+        url: 'https://iran-locations-api.vercel.app/api/v1/states',
+        type: 'GET',
+        success: function(data) {
+          // Populate dropdown menu with city names
+          var dropdownMenu = $('#state_dropdown .dropdown-menu');
+          data.forEach(function(city) {
+            var cityItem = $('<a class="dropdown-item" >' + city.name + '</a>');
+            // Add click event to handle city selection
+            cityItem.click(function() {
+              $('#chosen_state_btn').text(city.name);
+              $('#selected_state_data').val(city.name);
+              $('#chosen_city_btn').text('City');
+              $('#selected_city_data').val('');
+              $('#city_dropdown .dropdown-menu').empty();
+            });
+            console.log(cityItem)
+            dropdownMenu.append(cityItem);
+          });
+        },
+        error: function(error) {
+          console.log(error);
+        }
+      });
+      // Handle changes in the selected state
+      $('#selected_state_data').change(function() {
+        var selectedState = $(this).val();
+        console.log(selectedState)
+        // Fetch cities data based on the selected state
+        $.ajax({
+          url: 'https://iran-locations-api.vercel.app/api/v1/cities?State=' + selectedState,
+          type: 'GET',
+          success: function(data) {
+            // Populate city dropdown menu with city names
+            var cityDropdownMenu = $('#city_dropdown .dropdown-menu');
+            cityDropdownMenu.empty();
+            data.forEach(function(city) {
+              var cityItem = $('<a class="dropdown-item" href="#">' + city.name + '</a>');
+              // Add click event to handle city selection
+              cityItem.click(function() {
+                $('#chosen_city_btn').text(city.name);
+                $('#selected_city_data').val(city.name); // Set selected city in hidden input
+              });
+              cityDropdownMenu.append(cityItem);
+            });
+          },
+          error: function(error) {
+            console.log(error);
+          }
+        });
+      });
+    });
+  </script>
 
-{% block title %}
-    <title>Profile - Brand</title>
-{% endblock %}
-{% block content %}
-    <section class="py-5">
-        <div class="container profile profile-view" id="profile" style="margin-bottom: 50px;">
-            <div class="row">
-                <div class="col-md-12 alert-col relative">
-                    <div class="alert alert-info absolue center" role="alert"><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="alert"></button><span>Profile save with success</span></div>
-                </div>
-            </div>
-            <form>
-                <div class="row profile-row">
-                    <div class="col-md-4 relative">
-                        <div class="avatar">
-                            <div class="avatar-bg center"></div>
-                        </div><input class="form-control form-control" type="file" name="avatar-file">
-                    </div>
-                    <div class="col-md-8">
-                        <h1>Profile </h1>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6">
-                                <div class="form-group mb-3"><label class="form-label">Firstname </label><input class="form-control" type="text" name="firstname"></div>
-                            </div>
-                            <div class="col-sm-12 col-md-6">
-                                <div class="form-group mb-3"><label class="form-label">Lastname </label><input class="form-control" type="text" name="lastname"></div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6">
-                                <div class="form-group mb-3"><label class="form-label">Email </label><input class="form-control" type="email" autocomplete="on" required="" name="email"></div>
-                            </div>
-                            <div class="col-sm-12 col-md-6">
-                                <div class="form-group mb-3"><label class="form-label">Phone</label><input class="form-control" type="email" autocomplete="on" required="" name="phone"></div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6">
-                                <div class="form-group mb-3"><label class="form-label">Password </label><input class="form-control" type="password" name="password" autocomplete="off" required=""></div>
-                            </div>
-                            <div class="col-sm-12 col-md-6">
-                                <div class="form-group mb-3"><label class="form-label">Confirm Password</label><input class="form-control" type="password" name="confirmpass" autocomplete="off" required=""></div>
-                            </div>
-                        </div>
-                        <hr>
-                    </div>
-                </div>
-                <div><button class="btn form-btn" type="submit" style="background: #3d676b;color: rgb(255,255,255);padding-top: 5px;padding-bottom: 5px;width: 100%;max-width: 100%;">SAVE Profile</button></div>
-            </form>
-        </div>
-        <div class="container justify-content-between">
-            <h3 class="text-center" style="color: rgb(56,50,47);margin-bottom: 1px;font-weight: bold;">Addresses</h3>
-            <div style="width: 14%;margin-right: auto;margin-left: auto;margin-bottom: 20px;border-style: solid;border-color: rgba(116,111,109,0.5);"></div>
-            <div class="text-start" style="margin-bottom: 20px;"><button class="btn" type="button" style="padding-right: 10px;padding-left: 10px;padding-top: 0;padding-bottom: 0;color: rgb(36,36,36);box-shadow: 0px 0px 15px rgba(61,103,107,0.5);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-plus-lg" style="color: rgb(61,103,107);">
-                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"></path>
-                    </svg>&nbsp; Add Address</button></div>
-            <div class="row" id="address_" style="margin-bottom: 20px;border: 0.1px solid rgba(36,36,36,0.3);border-right-style: none;border-left-style: none;">
-                <div class="col text-center" style="margin-bottom: 10px;"><button class="btn" type="button" style="padding-right: 5px;padding-left: 5px;padding-top: 0;padding-bottom: 0;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-trash" style="color: rgb(142,93,161);">
-                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
-                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
-                        </svg></button><button class="btn" type="button" style="padding-right: 5px;padding-left: 5px;padding-top: 0;padding-bottom: 0;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-check-lg" style="color: rgb(61,103,107);">
-                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"></path>
-                        </svg></button>
-                    <div class="alert alert-success" role="alert" style="margin-right: auto;margin-left: auto;display: none;"><span id="update_success"><strong>Updated Successfully</strong></span></div>
-                </div>
-                <div class="col d-flex flex-fill justify-content-between" style="margin-bottom: 10px;"><input type="text" style="border-style: none;box-shadow: 0px 0px 15px rgba(61,103,107,0.5);border-radius: 15px;text-align: center;max-height: 29.5938px;" name="addressname" placeholder="Name" inputmode="tel">
-                    <div class="dropdown" id="state_dropdown"><button class="btn" aria-expanded="false" data-bs-toggle="dropdown" id="chosen_state_btn" type="button" style="padding: 1px 2px;min-width: 184px;color: rgb(36,36,36);border-radius: 30px;box-shadow: 0px 0px 15px rgba(61,103,107,0.5);">State</button>
-                        <div class="dropdown-menu" data-bs-smooth-scroll="true" style="height: 200px;overflow: scroll;border-radius: 0px;"><a class="dropdown-item"><span style="text-decoration: underline;">آذربایجان شرقی</span></a><a class="dropdown-item">آذربایجان غربی</a><a class="dropdown-item">اردبیل</a><a class="dropdown-item">اصفهان</a><a class="dropdown-item">البرز</a><a class="dropdown-item">ایلام</a><a class="dropdown-item">بوشهر</a><a class="dropdown-item">تهران</a><a class="dropdown-item">چهارمحال و بختیاری</a><a class="dropdown-item">خراسان جنوبی</a><a class="dropdown-item">خراسان رضوی</a><a class="dropdown-item">خراسان شمالی</a><a class="dropdown-item">خوزستان</a><a class="dropdown-item">زنجان</a><a class="dropdown-item">سمنان</a><a class="dropdown-item">سیستان و بلوچستان</a><a class="dropdown-item">فارس</a><a class="dropdown-item">قزوین</a><a class="dropdown-item">قم</a><a class="dropdown-item">کردستان</a><a class="dropdown-item">کرمان</a><a class="dropdown-item">کرمانشاه</a><a class="dropdown-item">کهگیلویه و بویراحمد</a><a class="dropdown-item">گلستان</a><a class="dropdown-item">گیلان</a><a class="dropdown-item">لرستان</a><a class="dropdown-item">مازندران</a><a class="dropdown-item">مرکزی</a><a class="dropdown-item">هرمزگان</a><a class="dropdown-item">همدان</a><a class="dropdown-item">یزد</a></div>
-                    </div>
-                    <div class="dropdown" id="city_dropdown"><button class="btn" aria-expanded="false" data-bs-toggle="dropdown" id="chosen_city_btn" type="button" style="padding: 1px 2px;min-width: 184px;color: rgb(36,36,36);border-radius: 30px;box-shadow: 0px 0px 15px rgba(61,103,107,0.5);">City</button>
-                        <div class="dropdown-menu"><a class="dropdown-item">First Item</a><a class="dropdown-item">Second Item</a><a class="dropdown-item">Third Item</a></div>
-                    </div>
-                </div>
-                <div class="col d-flex flex-fill justify-content-between" style="margin-bottom: 20px;width: 100%;"><textarea style="height: 32px;border-style: none;box-shadow: 0px 0px 15px rgb(61,103,107);max-width: 184px;" name="fulladdress" placeholder="Full Address"></textarea><input type="text" style="border-style: none;box-shadow: 0px 0px 15px rgba(61,103,107,0.5);border-radius: 15px;text-align: center;" name="postalcode" placeholder="Postal Code" inputmode="numeric"><input type="text" style="border-style: none;box-shadow: 0px 0px 15px rgba(61,103,107,0.5);border-radius: 15px;text-align: center;" name="addressnumber" placeholder="Number" inputmode="tel"></div>
-            </div>
-        </div>
-    </section>
+<script>
+    $(document).ready(function() {
+        var userToken = getCookie('login_token');  // تابع getCookie باید توسط شما تعریف شود
+        $.ajax({
+        url: '/core/api/user-profile/',  // مسیر API
+        type: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + userToken,  // استفاده از توکن از کوکی
+        },
+        success: function(data) {
+            // تنظیم اطلاعات کاربر در فرم
+            $('#firstname').val(data.first_name);
+            $('#lastname').val(data.last_name);
+            // بقیه فیلدها
+        },
+        error: function(error) {
+            console.log(error);
+        }
+        });
     
+        // درخواست به API برای دریافت لیست آدرس‌ها
+        $.ajax({
+        url: '/core/api/user-addresses/',  // مسیر API
+        type: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + userToken,  // استفاده از توکن از کوکی
+        },
+        success: function(data) {
+            // نمایش لیست آدرس‌ها به کاربر
+            for (var i = 0; i < data.length; i++) {
+            var addressHtml = '<div class="row address-row">';
+            addressHtml += '<div class="col">' + data[i].city + ', ' + data[i].state + '</div>';
+            // افزودن سایر فیلدها به HTML
+            addressHtml += '</div>';
+            $('.address-container').append(addressHtml);
+            }
+        },
+        error: function(error) {
+            console.log(error);
+        }
+        });
+    });
+    
+    function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+    }
+  </script>
+
 {% endblock %}
