@@ -2,10 +2,35 @@ from rest_framework.views import APIView
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from django.shortcuts import render
 from django.contrib.auth import get_user_model, logout
 from rest_framework import status
-from .models import CustomUser, Address
-from .serializers import UserProfileSerializer, AddressSerializer
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
+from rest_framework.parsers import JSONParser
+from .models import CustomUser, Address, Product, ProductCategory
+from .serializers import UserProfileSerializer, AddressSerializer, ProductSerializer, ProductCategorySerializer
+
+@api_view(['GET'])
+def filter_products(request, category_id):
+    category_name = ProductCategory.objects.get(id=category_id)
+    products = Product.objects.filter(categories__name=category_name).exclude(is_deleted=True)
+    serializer = ProductSerializer(products, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def get_categories(request):
+    categories = ProductCategory.objects.filter(is_sub_cat = False).exclude(is_deleted=True)
+    serializer = ProductCategorySerializer(categories, many=True)
+    return Response(serializer.data)
+
+@csrf_exempt
+@require_http_methods(["GET"])
+def get_products(request):
+    products = Product.objects.all()
+    serializer = ProductSerializer(products, many=True)
+    return JsonResponse(serializer.data, safe=False)
 
 class AddressListView(APIView):
     def get(self, request):

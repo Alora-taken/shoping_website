@@ -81,7 +81,7 @@
                 class="nav-link"
                 href="{% url 'product:brands' %}"
                 style="color: rgb(56, 50, 47)"
-                >Brands</a
+                >Categories</a
               >
             </li>
             <li class="nav-item">
@@ -115,10 +115,7 @@
               "
             >
               <a
-                class="nav-link"
-                aria-expanded="false"
-                data-bs-toggle="dropdown"
-                href="#"
+                href="/orders/shoping_cart"
                 ><svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="1em"
@@ -132,28 +129,7 @@
                     d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
                   ></path></svg
               ></a>
-              <div class="dropdown-menu">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>Column 1</th>
-                        <th>Column 2</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Cell 1</td>
-                        <td>Cell 2</td>
-                      </tr>
-                      <tr>
-                        <td>Cell 3</td>
-                        <td>Cell 4</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+              
             </li>
           </ul>
           <div class="dropdown d-none" id='profile_drop' style='margin-top: auto;margin-bottom: auto;'>
@@ -210,7 +186,7 @@
               class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column"
             >
               <ul class="list-unstyled">
-                <li><a href="{% url 'product:brands' %}">Brands</a></li>
+                <li><a href="{% url 'product:brands' %}">Categories</a></li>
                 <li></li>
                 <li></li>
               </ul>

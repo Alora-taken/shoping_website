@@ -59,6 +59,7 @@ class ProductCategory(BaseModel):
     name = models.CharField(max_length=255)
     info = models.TextField(null=True, blank=True,)
     product_image = models.ImageField(upload_to='category/', null=True, default='static/assets/img/transparent-photo-icon-for-your-interface-icon-picture-icon-5f9e5dcf942c94.2750417916042142236069copy.png')
+    is_sub_cat = models.BooleanField(default=False)
     parent_category = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='subcategories')
     
     def __str__(self):
@@ -69,7 +70,7 @@ class Product(BaseModel):
     brand = models.CharField(max_length=255)
     description = models.TextField()
     price = models.FloatField()
-    product_image = models.ImageField(upload_to='img/products/', null=True, default='static/assets/img/transparent-photo-icon-for-your-interface-icon-picture-icon-5f9e5dcf942c94.2750417916042142236069copy.png')
+    product_image = models.ImageField(upload_to='products/', null=True, default='static/assets/img/transparent-photo-icon-for-your-interface-icon-picture-icon-5f9e5dcf942c94.2750417916042142236069copy.png')
     stock_quantity = models.PositiveIntegerField()
     categories = models.ManyToManyField(ProductCategory, related_name='products')
 

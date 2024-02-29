@@ -142,625 +142,243 @@
       </div>
     </div>
     <div class="mx-auto" style="max-width: 900px">
-      <div class="row row-cols-1 row-cols-md-2 d-flex justify-content-center">
-        <div class="col mb-4">
-          <div
-            class="card"
-            style="
-              background: rgb(211, 205, 200);
-              border-style: none;
-              box-shadow: 0px 0px 10px rgb(106, 93, 110);
-              border-radius: 16px;
-            "
-          >
-            <div class="card-body" style="width: 100%">
-              <p
-                style="
-                  font-weight: bold;
-                  color: rgb(61, 103, 107);
-                  font-size: 20px;
-                  text-align: center;
-                "
-              >
-                Product Name
-              </p>
-              <div class="row" style="width: 100%">
-                <div class="col" style="width: 30%">
-                  <img
-                    style="width: 100%; height: auto"
-                    src="{% static 'assets/img/transparent-photo-icon-for-your-interface-icon-picture-icon-5f9e5dcf942c94.2750417916042142236069copy.png' %}"
-                  />
-                </div>
-                <div class="col" style="width: 70%">
-                  <h1
-                    style="
-                      font-size: 16px;
-                      font-weight: bold;
-                      color: rgb(45, 45, 45);
-                    "
-                  >
-                    Product Info
-                  </h1>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <footer
-                    class="d-flex justify-content-center align-items-center align-content-center"
-                    style="text-align: center; width: 100%"
-                  >
-                    <button
-                      class="btn btn-sm d-block"
-                      id="buy_-1"
-                      type="button"
-                      style="background: #3d676b; color: rgb(248, 252, 240)"
-                    >
-                      BUY
-                    </button>
-                    <div
-                      class="d-none"
-                      id="item_counter-2"
-                      style="display: block"
-                    >
-                      <button
-                        class="btn btn-primary d-inline-flex justify-content-center align-items-center align-content-center"
-                        type="button"
-                        style="
-                          background: var(--bs-gray-500);
-                          width: 25px;
-                          height: 25px;
-                          padding: 3px;
-                          border-radius: 30px;
-                          text-shadow: 0px 0px 8px rgba(253, 126, 20, 0.8);
-                          text-align: center;
-                          border-style: solid;
-                          border-color: var(--bs-gray-500);
-                          color: rgb(0, 0, 0);
-                          margin-top: auto;
-                          margin-bottom: auto;
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="1em"
-                          height="1em"
-                          fill="currentColor"
-                          viewBox="0 0 16 16"
-                          class="bi bi-dash-lg"
-                          style="
-                            /*background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);*/
-                            color: rgb(0, 0, 0);
-                            font-weight: bold;
-                          "
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
-                          ></path>
-                        </svg></button
-                      ><input
-                        type="number"
-                        class="quantity-field border-0 text-center w-25"
-                        style="
-                          width: 70px;
-                          margin-right: 5px;
-                          margin-left: 5px;
-                          border-radius: 30px;
-                          padding-right: 2px;
-                          padding-left: 6px;
-                        "
-                        min="1"
-                        value="1"
-                        name="quantity"
-                        step="1"
-                      /><button
-                        class="btn btn-primary d-inline-flex justify-content-center align-items-center align-content-center"
-                        type="button"
-                        style="
-                          background: var(--bs-gray-500);
-                          width: 25px;
-                          height: 25px;
-                          padding: 3px;
-                          border-radius: 30px;
-                          text-shadow: 0px 0px 8px rgba(253, 126, 20, 0.8);
-                          text-align: center;
-                          border-style: solid;
-                          border-color: var(--bs-gray-500);
-                          color: rgb(0, 0, 0);
-                          margin-top: auto;
-                          margin-bottom: auto;
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="1em"
-                          height="1em"
-                          fill="currentColor"
-                          viewBox="0 0 16 16"
-                          class="bi bi-plus-lg"
-                          style="
-                            /*background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);*/
-                            color: rgb(0, 0, 0);
-                            font-weight: bold;
-                          "
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
-                          ></path>
-                        </svg>
-                      </button>
-                    </div>
-                  </footer>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div
-            class="card"
-            style="
-              background: rgb(211, 205, 200);
-              border-style: none;
-              box-shadow: 0px 0px 10px rgb(106, 93, 110);
-              border-radius: 16px;
-            "
-          >
-            <div class="card-body" style="width: 100%">
-              <p
-                style="
-                  font-weight: bold;
-                  color: rgb(61, 103, 107);
-                  font-size: 20px;
-                  text-align: center;
-                "
-              >
-                Product Name
-              </p>
-              <div class="row" style="width: 100%">
-                <div class="col" style="width: 30%">
-                  <img
-                    style="width: 100%; height: auto"
-                    src="{% static 'assets/img/transparent-photo-icon-for-your-interface-icon-picture-icon-5f9e5dcf942c94.2750417916042142236069copy.png' %}"
-                  />
-                </div>
-                <div class="col" style="width: 70%">
-                  <h1
-                    style="
-                      font-size: 16px;
-                      font-weight: bold;
-                      color: rgb(45, 45, 45);
-                    "
-                  >
-                    Product Info
-                  </h1>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <footer
-                    class="d-flex justify-content-center align-items-center align-content-center"
-                    style="text-align: center; width: 100%"
-                  >
-                    <button
-                      class="btn btn-sm d-block"
-                      id="buy_-2"
-                      type="button"
-                      style="background: #3d676b; color: rgb(248, 252, 240)"
-                    >
-                      BUY
-                    </button>
-                    <div
-                      class="d-none"
-                      id="item_counter-1"
-                      style="display: block"
-                    >
-                      <button
-                        class="btn btn-primary d-inline-flex justify-content-center align-items-center align-content-center"
-                        type="button"
-                        style="
-                          background: var(--bs-gray-500);
-                          width: 25px;
-                          height: 25px;
-                          padding: 3px;
-                          border-radius: 30px;
-                          text-shadow: 0px 0px 8px rgba(253, 126, 20, 0.8);
-                          text-align: center;
-                          border-style: solid;
-                          border-color: var(--bs-gray-500);
-                          color: rgb(0, 0, 0);
-                          margin-top: auto;
-                          margin-bottom: auto;
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="1em"
-                          height="1em"
-                          fill="currentColor"
-                          viewBox="0 0 16 16"
-                          class="bi bi-dash-lg"
-                          style="
-                            /*background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);*/
-                            color: rgb(0, 0, 0);
-                            font-weight: bold;
-                          "
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
-                          ></path>
-                        </svg></button
-                      ><input
-                        type="number"
-                        class="quantity-field border-0 text-center w-25"
-                        style="
-                          width: 70px;
-                          margin-right: 5px;
-                          margin-left: 5px;
-                          border-radius: 30px;
-                          padding-right: 2px;
-                          padding-left: 6px;
-                        "
-                        min="1"
-                        value="1"
-                        name="quantity"
-                        step="1"
-                      /><button
-                        class="btn btn-primary d-inline-flex justify-content-center align-items-center align-content-center"
-                        type="button"
-                        style="
-                          background: var(--bs-gray-500);
-                          width: 25px;
-                          height: 25px;
-                          padding: 3px;
-                          border-radius: 30px;
-                          text-shadow: 0px 0px 8px rgba(253, 126, 20, 0.8);
-                          text-align: center;
-                          border-style: solid;
-                          border-color: var(--bs-gray-500);
-                          color: rgb(0, 0, 0);
-                          margin-top: auto;
-                          margin-bottom: auto;
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="1em"
-                          height="1em"
-                          fill="currentColor"
-                          viewBox="0 0 16 16"
-                          class="bi bi-plus-lg"
-                          style="
-                            /*background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);*/
-                            color: rgb(0, 0, 0);
-                            font-weight: bold;
-                          "
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
-                          ></path>
-                        </svg>
-                      </button>
-                    </div>
-                  </footer>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div
-            class="card"
-            style="
-              background: rgb(211, 205, 200);
-              border-style: none;
-              box-shadow: 0px 0px 10px rgb(106, 93, 110);
-              border-radius: 16px;
-            "
-          >
-            <div class="card-body" style="width: 100%">
-              <p
-                style="
-                  font-weight: bold;
-                  color: rgb(61, 103, 107);
-                  font-size: 20px;
-                  text-align: center;
-                "
-              >
-                Product Name
-              </p>
-              <div class="row" style="width: 100%">
-                <div class="col" style="width: 30%">
-                  <img
-                    style="width: 100%; height: auto"
-                    src="{% static 'assets/img/transparent-photo-icon-for-your-interface-icon-picture-icon-5f9e5dcf942c94.2750417916042142236069copy.png' %}"
-                  />
-                </div>
-                <div class="col" style="width: 70%">
-                  <h1
-                    style="
-                      font-size: 16px;
-                      font-weight: bold;
-                      color: rgb(45, 45, 45);
-                    "
-                  >
-                    Product Info
-                  </h1>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <footer
-                    class="d-flex justify-content-center align-items-center align-content-center"
-                    style="text-align: center; width: 100%"
-                  >
-                    <button
-                      class="btn btn-sm d-block"
-                      id="buy_-3"
-                      type="button"
-                      style="background: #3d676b; color: rgb(248, 252, 240)"
-                    >
-                      BUY
-                    </button>
-                    <div
-                      class="d-none"
-                      id="item_counter-3"
-                      style="display: block"
-                    >
-                      <button
-                        class="btn btn-primary d-inline-flex justify-content-center align-items-center align-content-center"
-                        type="button"
-                        style="
-                          background: var(--bs-gray-500);
-                          width: 25px;
-                          height: 25px;
-                          padding: 3px;
-                          border-radius: 30px;
-                          text-shadow: 0px 0px 8px rgba(253, 126, 20, 0.8);
-                          text-align: center;
-                          border-style: solid;
-                          border-color: var(--bs-gray-500);
-                          color: rgb(0, 0, 0);
-                          margin-top: auto;
-                          margin-bottom: auto;
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="1em"
-                          height="1em"
-                          fill="currentColor"
-                          viewBox="0 0 16 16"
-                          class="bi bi-dash-lg"
-                          style="
-                            /*background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);*/
-                            color: rgb(0, 0, 0);
-                            font-weight: bold;
-                          "
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
-                          ></path>
-                        </svg></button
-                      ><input
-                        type="number"
-                        class="quantity-field border-0 text-center w-25"
-                        style="
-                          width: 70px;
-                          margin-right: 5px;
-                          margin-left: 5px;
-                          border-radius: 30px;
-                          padding-right: 2px;
-                          padding-left: 6px;
-                        "
-                        min="1"
-                        value="1"
-                        name="quantity"
-                        step="1"
-                      /><button
-                        class="btn btn-primary d-inline-flex justify-content-center align-items-center align-content-center"
-                        type="button"
-                        style="
-                          background: var(--bs-gray-500);
-                          width: 25px;
-                          height: 25px;
-                          padding: 3px;
-                          border-radius: 30px;
-                          text-shadow: 0px 0px 8px rgba(253, 126, 20, 0.8);
-                          text-align: center;
-                          border-style: solid;
-                          border-color: var(--bs-gray-500);
-                          color: rgb(0, 0, 0);
-                          margin-top: auto;
-                          margin-bottom: auto;
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="1em"
-                          height="1em"
-                          fill="currentColor"
-                          viewBox="0 0 16 16"
-                          class="bi bi-plus-lg"
-                          style="
-                            /*background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);*/
-                            color: rgb(0, 0, 0);
-                            font-weight: bold;
-                          "
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
-                          ></path>
-                        </svg>
-                      </button>
-                    </div>
-                  </footer>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div
-            class="card"
-            style="
-              background: rgb(211, 205, 200);
-              border-style: none;
-              box-shadow: 0px 0px 10px rgb(106, 93, 110);
-              border-radius: 16px;
-            "
-          >
-            <div class="card-body" style="width: 100%">
-              <p
-                style="
-                  font-weight: bold;
-                  color: rgb(61, 103, 107);
-                  font-size: 20px;
-                  text-align: center;
-                "
-              >
-                Product Name
-              </p>
-              <div class="row" style="width: 100%">
-                <div class="col" style="width: 30%">
-                  <img
-                    style="width: 100%; height: auto"
-                    src="{% static 'assets/img/transparent-photo-icon-for-your-interface-icon-picture-icon-5f9e5dcf942c94.2750417916042142236069copy.png' %}"
-                  />
-                </div>
-                <div class="col" style="width: 70%; text-align: left">
-                  <h1
-                    style="
-                      font-size: 16px;
-                      font-weight: bold;
-                      color: rgb(45, 45, 45);
-                    "
-                  >
-                    Product Info
-                  </h1>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <footer
-                    class="d-flex justify-content-center align-items-center align-content-center"
-                    style="text-align: center; width: 100%"
-                  >
-                    <button
-                      class="btn btn-sm d-block"
-                      id="buy_-4"
-                      type="button"
-                      style="background: #3d676b; color: rgb(248, 252, 240)"
-                    >
-                      BUY
-                    </button>
-                    <div
-                      class="d-none"
-                      id="item_counter-4"
-                      style="display: block"
-                    >
-                      <button
-                        class="btn btn-primary d-inline-flex justify-content-center align-items-center align-content-center"
-                        type="button"
-                        style="
-                          background: var(--bs-gray-500);
-                          width: 25px;
-                          height: 25px;
-                          padding: 3px;
-                          border-radius: 30px;
-                          text-shadow: 0px 0px 8px rgba(253, 126, 20, 0.8);
-                          text-align: center;
-                          border-style: solid;
-                          border-color: var(--bs-gray-500);
-                          color: rgb(0, 0, 0);
-                          margin-top: auto;
-                          margin-bottom: auto;
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="1em"
-                          height="1em"
-                          fill="currentColor"
-                          viewBox="0 0 16 16"
-                          class="bi bi-dash-lg"
-                          style="
-                            /*background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);*/
-                            color: rgb(0, 0, 0);
-                            font-weight: bold;
-                          "
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
-                          ></path>
-                        </svg></button
-                      ><input
-                        type="number"
-                        class="quantity-field border-0 text-center w-25"
-                        style="
-                          width: 70px;
-                          margin-right: 5px;
-                          margin-left: 5px;
-                          border-radius: 30px;
-                          padding-right: 2px;
-                          padding-left: 6px;
-                        "
-                        min="1"
-                        value="1"
-                        name="quantity"
-                        step="1"
-                      /><button
-                        class="btn btn-primary d-inline-flex justify-content-center align-items-center align-content-center"
-                        type="button"
-                        style="
-                          background: var(--bs-gray-500);
-                          width: 25px;
-                          height: 25px;
-                          padding: 3px;
-                          border-radius: 30px;
-                          text-shadow: 0px 0px 8px rgba(253, 126, 20, 0.8);
-                          text-align: center;
-                          border-style: solid;
-                          border-color: var(--bs-gray-500);
-                          color: rgb(0, 0, 0);
-                          margin-top: auto;
-                          margin-bottom: auto;
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="1em"
-                          height="1em"
-                          fill="currentColor"
-                          viewBox="0 0 16 16"
-                          class="bi bi-plus-lg"
-                          style="
-                            /*background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);*/
-                            color: rgb(0, 0, 0);
-                            font-weight: bold;
-                          "
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
-                          ></path>
-                        </svg>
-                      </button>
-                    </div>
-                  </footer>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="row row-cols-1 row-cols-md-2 d-flex justify-content-center" id='product-container'>
+        
       </div>
     </div>
   </div>
 </section>
+
+{% comment %} <script>
+  document.addEventListener('DOMContentLoaded', function () {
+  function handleBuyClick(product) {
+    const buyButton = document.getElementById(`buy_${product.id}`);
+    const itemCounter = document.getElementById(`item_counter_${product.id}`);
+    const quantityInput = document.querySelector(`#item_counter_${product.id} input`);
+
+    // گوش دادن به کلیک دکمه BUY
+    buyButton.addEventListener('click', function () {
+        buyButton.classList.add('d-none'); // مخفی کردن دکمه BUY
+        itemCounter.classList.remove('d-none'); // نمایش دادن دیو item_counter
+
+        // گوش دادن به تغییرات در input تعداد
+        quantityInput.addEventListener('input', function () {
+            // ذخیره مقدار input در سشن کاربر
+            const sessionKey = `quantity_${product.name}`;
+            const quantityValue = quantityInput.value;
+            sessionStorage.setItem(sessionKey, quantityValue);
+        });
+    });
+}
+  fetch('/core/get_products/')
+  .then(response => response.json())
+  .then(data => {
+    // حلقه زده و برای هر محصول، یک کد HTML ایجاد کنید و به DOM اضافه کنید
+    data.forEach(product => {
+      const productCard = 
+
+      // اضافه کردن کد HTML به DOM
+      document.getElementById('product-container').innerHTML += productCard;
+      handleBuyClick(product);
+    });
+  })
+  .catch(error => console.error(''));});
+</script> {% endcomment %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // تابعی برای گوش دادن به کلیک بر روی دکمه BUY
+    function handleBuyClick(product) {
+        const buyButton = document.getElementById(`buy_${product.id}`);
+        const itemCounter = document.getElementById(`item_counter_${product.id}`);
+        const quantityInput = document.querySelector(`#item_counter_${product.id} input`);
+
+        // گوش دادن به کلیک دکمه BUY
+        buyButton.addEventListener('click', function () {
+            buyButton.classList.add('d-none'); // مخفی کردن دکمه BUY
+            itemCounter.classList.remove('d-none'); // نمایش دادن دیو item_counter
+
+            // گوش دادن به تغییرات در input تعداد
+            quantityInput.addEventListener('input', function () {
+                // ذخیره مقدار input در سشن کاربر
+                const sessionKey = `quantity_${product.name}`;
+                const quantityValue = quantityInput.value;
+                sessionStorage.setItem(sessionKey, quantityValue);
+            });
+        });
+    }
+
+    fetch('/core/get_products/')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(product => {
+                const productCard = `
+                <div class="col mb-4">
+                  <div
+                    class="card"
+                    style="
+                      background: rgb(211, 205, 200);
+                      border-style: none;
+                      box-shadow: 0px 0px 10px rgb(106, 93, 110);
+                      border-radius: 16px;
+                    "
+                  >
+                    <div class="card-body" style="width: 100%">
+                      <p
+                        style="
+                          font-weight: bold;
+                          color: rgb(61, 103, 107);
+                          font-size: 20px;
+                          text-align: center;
+                        "
+                      >
+                      ${product.name}
+                      </p>
+                      <div class="row" style="width: 100%">
+                        <div class="col" style="width: 30%">
+                          <img
+                            style="width: 100%; height: auto"
+                            src="${product.product_image}"
+                            
+                          />
+                        </div>
+                        <div class="col" style="width: 70%; text-align: center;margin-top:auto;margin-bottom:auto">
+                          <h1
+                            style="
+                              font-size: 16px;
+                              font-weight: bold;
+                              color: rgb(45, 45, 45);
+                            "
+                          >
+                          ${product.price}
+                          </h1>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <footer
+                            class="d-flex justify-content-center align-items-center align-content-center"
+                            style="text-align: center; width: 100%"
+                          >
+                            <button
+                              class="btn btn-sm d-block"
+                              id="buy_${product.id}"
+                              type="button"
+                              style="background: #3d676b; color: rgb(248, 252, 240)"
+                            >
+                            BUY
+                            </button>
+                            <div
+                              class="d-none"
+                              id="item_counter_${product.id}"
+                              style="display: block"
+                            >
+                              <button
+                                class="btn btn-primary d-inline-flex justify-content-center align-items-center align-content-center"
+                                type="button"
+                                style="
+                                  background: var(--bs-gray-500);
+                                  width: 25px;
+                                  height: 25px;
+                                  padding: 3px;
+                                  border-radius: 30px;
+                                  text-shadow: 0px 0px 8px rgba(253, 126, 20, 0.8);
+                                  text-align: center;
+                                  border-style: solid;
+                                  border-color: var(--bs-gray-500);
+                                  color: rgb(0, 0, 0);
+                                  margin-top: auto;
+                                  margin-bottom: auto;
+                                "
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="1em"
+                                  height="1em"
+                                  fill="currentColor"
+                                  viewBox="0 0 16 16"
+                                  class="bi bi-dash-lg"
+                                  style="
+                                    /*background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);*/
+                                    color: rgb(0, 0, 0);
+                                    font-weight: bold;
+                                  "
+                                >
+                                  <path
+                                    fill-rule="evenodd"
+                                    d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
+                                  ></path>
+                                </svg></button
+                              ><input
+                                type="number"
+                                class="quantity-field border-0 text-center w-25"
+                                style="
+                                  width: 70px;
+                                  margin-right: 5px;
+                                  margin-left: 5px;
+                                  border-radius: 30px;
+                                  padding-right: 2px;
+                                  padding-left: 6px;
+                                "
+                                min="1"
+                                value="1"
+                                name="quantity"
+                                step="1"
+                              /><button
+                                class="btn btn-primary d-inline-flex justify-content-center align-items-center align-content-center"
+                                type="button"
+                                style="
+                                  background: var(--bs-gray-500);
+                                  width: 25px;
+                                  height: 25px;
+                                  padding: 3px;
+                                  border-radius: 30px;
+                                  text-shadow: 0px 0px 8px rgba(253, 126, 20, 0.8);
+                                  text-align: center;
+                                  border-style: solid;
+                                  border-color: var(--bs-gray-500);
+                                  color: rgb(0, 0, 0);
+                                  margin-top: auto;
+                                  margin-bottom: auto;
+                                "
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="1em"
+                                  height="1em"
+                                  fill="currentColor"
+                                  viewBox="0 0 16 16"
+                                  class="bi bi-plus-lg"
+                                  style="
+                                    /*background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);*/
+                                    color: rgb(0, 0, 0);
+                                    font-weight: bold;
+                                  "
+                                >
+                                  <path
+                                    fill-rule="evenodd"
+                                    d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+                                  ></path>
+                                </svg>
+                              </button>
+                            </div>
+                          </footer>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                `;
+
+                document.getElementById('product-container').innerHTML += productCard;
+
+                // فراخوانی تابع handleBuyClick برای هر محصول
+                handleBuyClick(product);
+            });
+        })
+        .catch(error => console.error(''));
+});
+
+</script>
+
 {% endblock %}
