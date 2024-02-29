@@ -186,28 +186,50 @@
 </script> {% endcomment %}
 
 <script>
+  function changebtn(product) {
+    console.log("btn clicked", product);
+    let buyButton = document.getElementById(`buy_${product}`);
+    let itemCounter = document.getElementById(`item_counter_${product}`);
+    let quantityInput = document.querySelector(`#item_counter_${product} input`);
+    console.log(buyButton,itemCounter,quantityInput);
+    buyButton.classList.remove('d-block');
+    buyButton.classList.add('d-none'); 
+    itemCounter.classList.remove('d-none');
+    const sessionKey = `${product}`;
+    const quantityValue = 1;
+    sessionStorage.setItem(sessionKey, quantityValue);
+    quantityInput.addEventListener('input', function () {
+      const sessionKey = `${product}`;
+      const quantityValue = quantityInput.value;
+      sessionStorage.setItem(sessionKey, quantityValue);
+  });  
+
+    {% comment %} id="buy_${product.id}" ==> class d-block => d-none
+    id="item_counter_${product.id}" ==> class d-none => d-block {% endcomment %}
+
+  }
   document.addEventListener('DOMContentLoaded', function () {
-    // تابعی برای گوش دادن به کلیک بر روی دکمه BUY
-    function handleBuyClick(product) {
-        const buyButton = document.getElementById(`buy_${product.id}`);
-        const itemCounter = document.getElementById(`item_counter_${product.id}`);
-        const quantityInput = document.querySelector(`#item_counter_${product.id} input`);
+    {% comment %} function handleBuyClick(product) {
+        let buyButton = document.getElementById(`buy_${product.id}`);
+        console.log(buyButton)
+        let itemCounter = document.getElementById(`item_counter_${product.id}`);
+        let quantityInput = document.querySelector(`#item_counter_${product.id} input`);
 
-        // گوش دادن به کلیک دکمه BUY
-        buyButton.addEventListener('click', function () {
-            buyButton.classList.add('d-none'); // مخفی کردن دکمه BUY
-            itemCounter.classList.remove('d-none'); // نمایش دادن دیو item_counter
+        buyButton.addEventListener('click', function(event) {
+            console.log("btn clicked")
+            buyButton.classList.remove('d-block');
+            buyButton.classList.add('d-none'); 
+            itemCounter.classList.remove('d-none'); 
 
-            // گوش دادن به تغییرات در input تعداد
             quantityInput.addEventListener('input', function () {
-                // ذخیره مقدار input در سشن کاربر
                 const sessionKey = `quantity_${product.name}`;
                 const quantityValue = quantityInput.value;
                 sessionStorage.setItem(sessionKey, quantityValue);
             });
         });
-    }
-
+    } {% endcomment %}
+    
+    
     fetch('/core/get_products/')
         .then(response => response.json())
         .then(data => {
@@ -264,6 +286,7 @@
                               class="btn btn-sm d-block"
                               id="buy_${product.id}"
                               type="button"
+                              onclick="changebtn(${product.id})"
                               style="background: #3d676b; color: rgb(248, 252, 240)"
                             >
                             BUY
@@ -372,11 +395,11 @@
 
                 document.getElementById('product-container').innerHTML += productCard;
 
-                // فراخوانی تابع handleBuyClick برای هر محصول
-                handleBuyClick(product);
+                {% comment %} handleBuyClick(product); {% endcomment %}
             });
         })
         .catch(error => console.error(''));
+
 });
 
 </script>
