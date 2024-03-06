@@ -47,8 +47,8 @@ def login(request):
             redis_conn.set(redis_key, json.dumps(data_to_store))
             redis_conn.expire(redis_key, 300)
             
-            # sms.verification({'receptor': str(user.phone),'type': '1','template': 'PerfumeSite','param1': str(otp_code)})
-            print('sms sent', otp_code)
+            sms.verification({'receptor': str(user.phone),'type': '1','template': 'PerfumeSite','param1': str(otp_code)})
+            # print('sms sent', otp_code)
             email = email_address
             return render(request, 'accounts/login.html',context={'email':email,'s_alert':"پیام با موفقیت ارسال شد"})
             
@@ -59,7 +59,6 @@ def login(request):
                 user.token = user_token
                 user.is_active = True
                 user.save()
-                print(user.password)
                 response = redirect('home') 
                 response.set_cookie('login_token', user_token, max_age=10000)
                 return response

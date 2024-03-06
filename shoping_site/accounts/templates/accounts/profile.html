@@ -22,9 +22,9 @@
     </div>
     <form>
       <div class="row profile-row">
-        <div class="col-md-4 relative">
-          <div class="avatar">
-            <div id='avatar' name='avatar' class="avatar-bg center" style="background: url(https://www.gravatar.com/avatar/1234566?size=200&d=mm);"></div>
+        <div class="col-md-4 relative" >
+          <div class="avatar center" >
+            <img id='avatar' name='avatar' class="justify-content-center align-items-center align-content-center" src="{% static 'assets/img/transparent-photo-icon-for-your-interface-icon-picture-icon-5f9e5dcf942c94.2750417916042142236069copy.png' %}" style="width:300px;height:300px;"/>
           </div>
           <input
             class="form-control form-control"
@@ -87,7 +87,7 @@
                   name="password"
                   id="password"
                   autocomplete="off"
-                  required="False"
+                  
                 />
               </div>
             </div>
@@ -100,7 +100,7 @@
                   name="confirmpass"
                   id="confirmpass"
                   autocomplete="off"
-                  required="False"
+                  
                 />
               </div>
             </div>
@@ -356,110 +356,34 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script>
-    $(document).ready(function() {
-      // Fetch cities data from the API
-      $.ajax({
-        url: 'https://iran-locations-api.vercel.app/api/v1/states',
-        type: 'GET',
-        success: function(data) {
-          // Populate dropdown menu with city names
-          var dropdownMenu = $('#state_dropdown .dropdown-menu');
-          data.forEach(function(city) {
-            var cityItem = $('<a class="dropdown-item" >' + city.name + '</a>');
-            // Add click event to handle city selection
-            cityItem.click(function() {
-              $('#chosen_state_btn').text(city.name);
-              $('#selected_state_data').val(city.name);
-              $('#chosen_city_btn').text('City');
-              $('#selected_city_data').val('');
-              $('#city_dropdown .dropdown-menu').empty();
-            });
-            console.log(cityItem)
-            dropdownMenu.append(cityItem);
-          });
-        },
-        error: function(error) {
-          console.log(error);
-        }
-      });
-      // Handle changes in the selected state
-      $('#selected_state_data').change(function() {
-        var selectedState = $(this).val();
-        console.log(selectedState)
-        // Fetch cities data based on the selected state
-        $.ajax({
-          url: 'https://iran-locations-api.vercel.app/api/v1/cities?State=' + selectedState,
-          type: 'GET',
-          success: function(data) {
-            // Populate city dropdown menu with city names
-            var cityDropdownMenu = $('#city_dropdown .dropdown-menu');
-            cityDropdownMenu.empty();
-            data.forEach(function(city) {
-              var cityItem = $('<a class="dropdown-item" href="#">' + city.name + '</a>');
-              // Add click event to handle city selection
-              cityItem.click(function() {
-                $('#chosen_city_btn').text(city.name);
-                $('#selected_city_data').val(city.name); // Set selected city in hidden input
-              });
-              cityDropdownMenu.append(cityItem);
-            });
-          },
-          error: function(error) {
-            console.log(error);
-          }
-        });
-      });
-    });
-  </script>
+  document.addEventListener('DOMContentLoaded', function () {
+  // تابع برای دریافت اطلاعات پروفایل از سمت سرور
+  function fetchProfileData() {
+    fetch('/core/api/user-info/')  // مسیر اندپوینت پروفایل خود را قرار دهید
+      .then(response => response.json())
+      .then(data => {
+        // اطلاعات دریافت شده را در اینجا بررسی کرده و مقداردهی به اینپوت‌ها انجام دهید
+        document.getElementById('firstname').value = data.first_name;
+        document.getElementById('lastname').value = data.last_name;
+        document.getElementById('email').value = data.email;
+        document.getElementById('phone').value = data.phone;
+        document.getElementById('avatar').src = data.user_image;
+        // دیگر اطلاعات را نیز به همین ترتیب اضافه کنید
+      })
+      .catch(error => console.error(error));
+  }
 
-<script>
-    $(document).ready(function() {
-        var userToken = getCookie('login_token');  // تابع getCookie باید توسط شما تعریف شود
-        $.ajax({
-        url: '/core/api/user-profile/',  // مسیر API
-        type: 'GET',
-        headers: {
-            'Authorization': 'Bearer ' + userToken,  // استفاده از توکن از کوکی
-        },
-        success: function(data) {
-            // تنظیم اطلاعات کاربر در فرم
-            $('#firstname').val(data.first_name);
-            $('#lastname').val(data.last_name);
-            // بقیه فیلدها
-        },
-        error: function(error) {
-            console.log(error);
-        }
-        });
-    
-        // درخواست به API برای دریافت لیست آدرس‌ها
-        $.ajax({
-        url: '/core/api/user-addresses/',  // مسیر API
-        type: 'GET',
-        headers: {
-            'Authorization': 'Bearer ' + userToken,  // استفاده از توکن از کوکی
-        },
-        success: function(data) {
-            // نمایش لیست آدرس‌ها به کاربر
-            for (var i = 0; i < data.length; i++) {
-            var addressHtml = '<div class="row address-row">';
-            addressHtml += '<div class="col">' + data[i].city + ', ' + data[i].state + '</div>';
-            // افزودن سایر فیلدها به HTML
-            addressHtml += '</div>';
-            $('.address-container').append(addressHtml);
-            }
-        },
-        error: function(error) {
-            console.log(error);
-        }
-        });
-    });
-    
-    function getCookie(name) {
-        var value = "; " + document.cookie;
-        var parts = value.split("; " + name + "=");
-        if (parts.length == 2) return parts.pop().split(";").shift();
-    }
-  </script>
+  // فراخوانی تابع دریافت اطلاعات پروفایل
+  fetchProfileData();
 
+  // بررسی کلیک بر روی دکمه "SAVE Profile"
+  document.querySelector('form').addEventListener('submit', function (event) {
+    // اینجا اطلاعات ویرایش شده را به سمت سرور ارسال کنید
+    // ...
+    // در انتها می‌توانید پیغام موفقیت‌آمیز بودن ذخیره‌سازی نمایش دهید
+    alert('Profile saved successfully!');
+    event.preventDefault();
+  });
+});
+</script>
 {% endblock %}

@@ -278,7 +278,7 @@
                       console.error('User not found');
                   } 
                   else {
-                      profile_img.src = '/static/' + data.photo; // مسیر عکس کاربر
+                      profile_img.src = data.user_image; // مسیر عکس کاربر
                       dropdown.classList.remove('d-none');
                       sign_in_btn.classList.add('d-none');
                   }

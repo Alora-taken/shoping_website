@@ -17,11 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
+from django.views.generic import TemplateView
 
 app_name = 'product'
 urlpatterns = [
     path('brands/', views.brand, name='brands'),
-    path('product/', views.product, name='product'),
+    # path('product/', views.product, name='product'),
     path('product_filter/<int:category_id>/', views.product_filter, name='product_filter'),
     path('products/', views.products, name='products'),
+    path('product/', TemplateView.as_view(template_name='product/product.html'), name='product'),
 ]

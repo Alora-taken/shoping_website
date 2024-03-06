@@ -87,12 +87,13 @@ class DiscountCode(BaseModel):
     expiration = models.DateTimeField(null = True)
     quantity = models.IntegerField(null = True)
     discount = models.ForeignKey(Discount, on_delete=models.CASCADE)
+    max_discount = models.IntegerField(null = True, blank = True)
 
 class Order(BaseModel):
     customer = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='orders')
     total_price = models.FloatField()
     address = models.TextField()
-    discount = models.ForeignKey(Discount, on_delete=models.SET_NULL, null=True, blank=True)
+    discount = models.ForeignKey(DiscountCode, on_delete=models.SET_NULL, null=True, blank=True)
     is_finalized = models.BooleanField(default=False)
 
 class OrderItem(BaseModel):

@@ -25,6 +25,12 @@ def get_categories(request):
     serializer = ProductCategorySerializer(categories, many=True)
     return Response(serializer.data)
 
+@api_view(['GET'])
+def get_sub_categories(request):
+    categories = ProductCategory.objects.filter(is_sub_cat = Tr).exclude(is_deleted=True)
+    serializer = ProductCategorySerializer(categories, many=True)
+    return Response(serializer.data)
+
 @csrf_exempt
 @require_http_methods(["GET"])
 def get_products(request):
@@ -68,14 +74,8 @@ class UserInfoAPIView(APIView):
         if user_token:
             try:
                 user = get_user_model().objects.get(token=user_token)
-                data = {
-                    'id': user.id,
-                    'email': user.email,
-                    'first_name': user.first_name,
-                    'last_name': user.last_name,
-                    'photo': str(user.user_image),
-                }
-                return Response(data)
+                serializer = UserProfileSerializer(user)
+                return Response(serializer.data)
             
             except get_user_model().DoesNotExist:
                 pass
