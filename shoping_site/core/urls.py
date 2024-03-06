@@ -1,8 +1,13 @@
-from django.urls import path
-from .views import UserInfoAPIView, logout, UserProfileView, AddressListView, get_products, get_categories, filter_products
+from django.urls import path , include
+from rest_framework.routers import DefaultRouter
+from .views import UserInfoAPIView, logout, UserProfileView, AddressListView, get_products, get_categories, filter_products ,UserProfileApiViewSet, AddressListApiViewSet
+router = DefaultRouter()
+router.register(r'users', UserProfileApiViewSet )
+router.register(r'address_list',  AddressListApiViewSet)
 
 app_name='core'
 urlpatterns = [
+    path('',include(router.urls)),
     path('api/user-info/', UserInfoAPIView.as_view(), name='user-info-api'),
     path('api/logout/', logout, name='api_logout'),
     path('get_products/', get_products, name='get_products'),

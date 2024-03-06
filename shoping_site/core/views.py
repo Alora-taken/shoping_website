@@ -1,9 +1,11 @@
 from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from django.shortcuts import render
 from django.contrib.auth import get_user_model, logout
+from django.contrib.sessions.models import Session
 from rest_framework import status
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -11,6 +13,14 @@ from django.views.decorators.http import require_http_methods
 from rest_framework.parsers import JSONParser
 from .models import CustomUser, Address, Product, ProductCategory
 from .serializers import UserProfileSerializer, AddressSerializer, ProductSerializer, ProductCategorySerializer
+class IsAuthenticated(IsAuthenticated):
+    """
+    Allows access only to authenticated users.
+    """
+
+    def has_permission(self,request, view):
+        if request.COOKIES.get('login_token') != '' and CustomUser.objects.filter(token=request.COOKIES.get('login_token')).exists():
+            return True
 
 @api_view(['GET'])
 def filter_products(request, category_id):
@@ -47,22 +57,60 @@ class AddressListView(APIView):
             serializer = AddressSerializer(addresses, many=True)
             return Response(serializer.data)
 
+class AddressListApiViewSet(ModelViewSet):
+    queryset = Address.objects.all()
+    serializer_class = AddressSerializer
+    def get_queryset(self):
+        if self.request.COOKIES.get('login_token') != None and CustomUser.objects.filter(token=self.request.COOKIES.get('login_token')).exists():
+            user_token = self.request.COOKIES.get('login_token')
+            user = get_user_model().objects.get(token=user_token)
+            print(user)
+            addresses = Address.objects.filter(customer=user)
+            return addresses
+        
+class UserProfileApiViewSet(ModelViewSet):
+    permission_classes = [IsAuthenticated]
+    queryset = CustomUser.objects.all()
+    serializer_class = UserProfileSerializer
+    def get_queryset(self):
+        if self.request.COOKIES.get('login_token') != '' and CustomUser.objects.filter(token=self.request.COOKIES.get('login_token')).exists():
+            user_token = self.request.COOKIES.get('login_token')
+            user = CustomUser.objects.filter(token=user_token)
+        
+            return user
+    
 
 class UserProfileView(APIView):
+    allowed_methods = ['GET', 'PUT']
     def get(self, request):
         if request.COOKIES.get('login_token') != '' and CustomUser.objects.filter(token=request.COOKIES.get('login_token')).exists():
             user_token = request.COOKIES.get('login_token')
             user = get_user_model().objects.get(token=user_token)
             serializer = UserProfileSerializer(user)
             return Response(serializer.data)
+    def put(self, request,format=None):
+        if request.COOKIES.get('login_token') != '' and CustomUser.objects.filter(token=request.COOKIES.get('login_token')).exists():
+            user_token = request.COOKIES.get('login_token')
+            user = get_user_model().objects.get(token=user_token)
+            serializer = UserProfileSerializer(user, data = request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def logout(request):
+    sessions = Session.objects.all()
+    print("sessions: ",sessions)
+    for session in sessions:
+        print(session)
+        session.delete()
     user_token = request.COOKIES.get('login_token')
     user = get_user_model().objects.get(token=user_token)
     response = Response({"message": "Logged out successfully."})
     response.delete_cookie('login_token')
+    response.delete_cookie('user_id')
     user.token = None
     user.is_active = False
     user.save()

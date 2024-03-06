@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.views.generic import TemplateView
+from django.urls import reverse_lazy
 from django.conf import settings
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth import get_user_model, authenticate, login
@@ -61,6 +63,7 @@ def login(request):
                 user.save()
                 response = redirect('home') 
                 response.set_cookie('login_token', user_token, max_age=10000)
+                response.set_cookie('user_id', user.id, max_age=10000)
                 return response
             
             else:
@@ -82,7 +85,8 @@ def login(request):
                     user.is_active = True
                     user.save()
                     response = redirect('home') 
-                    response.set_cookie('login_token', user_token, max_age=10000) 
+                    response.set_cookie('login_token', user_token, max_age=10000)
+                    response.set_cookie('user_id', user.id, max_age=10000) 
                     redis_key = f"login:{email_address}"
                     data_to_store = {}
                     redis_conn.set(redis_key, json.dumps(data_to_store))
@@ -123,9 +127,16 @@ def sign_up(request):
         user.save()
         response = redirect('home') 
         response.set_cookie('login_token', user_token, max_age=10000)
+        response.set_cookie('user_id', user.id, max_age=10000)
         return response
 
     return render(request, 'accounts/signup.html', context={})
 
-def profile(request):
-    return render(request, 'accounts/profile.html', context={})
+class Profile(TemplateView):
+    template_name = 'accounts/profile.html'
+    def dispatch(self, request, *args, **kwargs):
+        if request.COOKIES.get('login_token') != None and CustomUser.objects.filter(token=request.COOKIES.get('login_token')).exists():
+            return super().dispatch(request, *args, **kwargs)
+        else:
+            return redirect(reverse_lazy('account:login'))
+    
